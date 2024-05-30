@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of squirrels is to …
+The goal of squirrels is to analyze some squirrels
 
 ## Installation
 
