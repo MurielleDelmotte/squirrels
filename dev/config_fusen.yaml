@@ -1,0 +1,34 @@
+flat_check_data.Rmd:
+  path: dev/flat_check_data.Rmd
+  state: active
+  R:
+  - R/check_coordinates.R
+  - R/check_plus_in_primary_fur_color.R
+  - R/check_presence_of_required_columns.R
+  - R/filter_squirrels_data_based_on_integrity.R
+  tests:
+  - tests/testthat/test-check_plus_in_primary_fur_color.R
+  - tests/testthat/test-check_coordinates.R
+  - tests/testthat/test-check_presence_of_required_columns.R
+  - tests/testthat/test-filter_squirrels_data_based_on_integrity.R
+  vignettes: vignettes/check-data.Rmd
+  inflate:
+    flat_file: dev/flat_check_data.Rmd
+    vignette_name: Check data
+    open_vignette: false
+    check: true
+    document: true
+    overwrite: 'yes'
+flat_get_info.Rmd:
+  path: dev/flat_get_info.Rmd
+  state: active
+  R: R/get_df_nrows.R
+  tests: tests/testthat/test-get_df_nrows.R
+  vignettes: vignettes/get-info-about-the-dataset.Rmd
+  inflate:
+    flat_file: dev/flat_get_info.Rmd
+    vignette_name: Get info about the dataset
+    open_vignette: false
+    check: true
+    document: true
+    overwrite: 'yes'

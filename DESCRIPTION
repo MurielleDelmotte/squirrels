@@ -1,0 +1,25 @@
+Package: squirrels
+Title: Des Outils Pour Analyser Les Écureuils De Central Park
+Version: 0.0.1
+Authors@R: 
+    person("Murielle", "Delmotte", , "murielle@thinkr.fr", role = c("aut", "cre"))
+Description: Une voite à outils de fonctions pour les écureuils.
+License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    glue,
+    stringr
+Suggests: 
+    knitr,
+    readr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Config/fusen/version: 0.5.2
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
