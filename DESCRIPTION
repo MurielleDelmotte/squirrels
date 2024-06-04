@@ -10,7 +10,9 @@ Depends:
 Imports: 
     dplyr,
     glue,
-    stringr
+    stringr,
+    tools,
+    utils
 Suggests: 
     knitr,
     readr,

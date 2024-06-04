@@ -1,0 +1,149 @@
+---
+title: "flat_export_results.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(tools)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+
+# save_as_csv
+
+```{r development}
+
+
+df <- iris
+path <- "mondossier"
+
+mon_dossier_temp <- tempfile(pattern = "saveascsv")
+dir.create(mon_dossier_temp)
+mypath <- file.path(mon_dossier_temp, "output.csv")
+
+
+rstudioapi::filesPaneNavigate(mon_dossier_temp)
+
+
+
+
+
+if (isFALSE(is.data.frame(df))) {
+  stop("df is not a data frame")
+}
+
+if (isTRUE(nrow(df) == 0)) {
+  stop("df has an empty dataframe")
+}
+
+if (isFALSE(file.ext(mypath) == "csv" )){
+  stop("mypath must be a csv")
+}
+
+if (isFALSE(dir.exists(dirname(mypath)))){
+  stop("mypath does not exist")
+}
+
+write.csv2(x = df, file = mypath)
+
+mypath
+
+
+```
+
+
+    
+```{r function-save_as_csv}
+#' Save as csv
+#' 
+#' @param df a data.frame
+#' @param mypath le chemin ou enregistrer mon df
+#' @importFrom tools file_ext
+#' @importFrom utils write.csv2
+#' 
+#' @return Le chemin d enregistrement
+#' 
+#' @export
+save_as_csv <- function(df, mypath ){
+    
+  
+if (isFALSE(is.data.frame(df))) {
+  stop("df is not a data frame")
+}
+
+if (isTRUE(nrow(df) == 0)) {
+  stop("df has an empty dataframe")
+}
+
+if (isFALSE(file_ext(mypath) == "csv" )){
+  stop("mypath must be a csv")
+}
+
+if (isFALSE(dir.exists(dirname(mypath)))){
+  stop("mypath does not exist")
+}
+
+write.csv2(x = df, file = mypath)
+message("Finish : Writing")
+return(mypath)
+  
+}
+```
+  
+```{r example-save_as_csv}
+
+path <- "mondossier"
+
+mon_dossier_temp <- tempfile(pattern = "saveascsv")
+dir.create(mon_dossier_temp)
+mypath <- file.path(mon_dossier_temp, "output.csv")
+
+save_as_csv(df = iris, mypath = mypath)
+unlink(mypath)
+```
+  
+```{r tests-save_as_csv}
+test_that("save_as_csv works", {
+  expect_true(inherits(save_as_csv, "function")) 
+  
+  
+mon_dossier_temp <- tempfile(pattern = "saveascsv")
+dir.create(mon_dossier_temp)
+mypath <- file.path(mon_dossier_temp, "output.csv")
+  
+# erreur : l'extension du fichier à créer n'est pas la bonne
+expect_error(
+  iris |> save_as_csv(file.path(mon_dossier_temp, "output.xlsx")),
+  "mypath must be a csv")
+
+# erreur : la fonction n'est pas appliquée à un data.frame
+expect_error(
+  NULL |> save_as_csv(file.path(mon_dossier_temp, "output.csv")),
+  "df is not a data frame")
+
+# erreur : le chemin où doit être enregistré le fichier n'existe pas
+expect_error(
+  iris |> save_as_csv(file.path(mon_dossier_temp, "nexiste/pas/output.csv")),
+  "mypath does not exist")
+  
+  
+  
+})
+```
+  
+
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_export_results.Rmd", vignette_name = "Exporter les résultats", open_vignette = FALSE, overwrite = TRUE)
+```
+
