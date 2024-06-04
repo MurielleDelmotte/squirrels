@@ -61,16 +61,19 @@ mypath
 
     
 ```{r function-save_as_csv}
-#' Save as csv
-#' 
-#' @param df a data.frame
-#' @param mypath le chemin ou enregistrer mon df
+#' Save an output as a csv file
+#'
+#' @param df Data frame. The table to be saved as a csv file.
+#' @param mypath Character. Path where the csv file shloud be saved.
+#'
 #' @importFrom tools file_ext
 #' @importFrom utils write.csv2
-#' 
-#' @return Le chemin d enregistrement
-#' 
+#'
+#' @return The path to the created csv file.
 #' @export
+#'
+#' @examples
+
 save_as_csv <- function(df, mypath ){
     
   
@@ -110,13 +113,24 @@ unlink(mypath)
 ```
   
 ```{r tests-save_as_csv}
-test_that("save_as_csv works", {
-  expect_true(inherits(save_as_csv, "function")) 
-  
-  
+
 mon_dossier_temp <- tempfile(pattern = "saveascsv")
 dir.create(mon_dossier_temp)
 mypath <- file.path(mon_dossier_temp, "output.csv")
+  
+
+test_that("save_as_csv works", {
+  expect_true(inherits(save_as_csv, "function")) 
+  
+  path <- iris |> save_as_csv(mypath)
+
+  expect_true(
+    file.exists(path)
+  )
+
+})
+
+test_that("save_as_csv return Error", {
   
 # erreur : l'extension du fichier à créer n'est pas la bonne
 expect_error(
@@ -133,8 +147,12 @@ expect_error(
   iris |> save_as_csv(file.path(mon_dossier_temp, "nexiste/pas/output.csv")),
   "mypath does not exist")
   
-  
-  
+# jeu de données vide
+  expect_error(
+    data.frame() |> save_as_csv(file.path(mon_dossier_temp, "output.csv")),
+    "df has an empty dataframe"
+  )
+
 })
 ```
   
