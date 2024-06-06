@@ -1,0 +1,75 @@
+---
+title: "flat_get_welcome_message_raul.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+
+date<- "23/01/2023"
+
+stringr::str_replace_all(Sys.Date(), "-", "/")
+
+print(paste0("Hey ! Nous sommes le ", date," c'est un super jour pour aller observer les écurueils, non ?"))
+
+
+
+```
+
+# get_welcome_message_raul
+
+```{r function-get_welcome_message_raul}
+#' get_welcome_message_raul Title
+#'
+#' @param date a character string that looks like a date
+#'
+#' @importFrom stringr str_replace_all
+#' @return A message
+#' @export 
+#'
+#' @examples
+
+
+
+
+get_welcome_message_raul <- function(date=stringr::str_replace_all(Sys.Date(), "-", "/")) {
+  
+  if (isFALSE(inherits(as.Date(date),"Date"))){
+    stop()
+  }
+  
+  return(print(paste0("Hey ! Nous sommes le ", date," c'est un super jour pour aller observer les écurueils, non ?"))
+)
+  
+}
+```
+
+```{r examples-get_welcome_message_raul}
+get_welcome_message_raul()
+get_welcome_message_raul(date="09/02/1982")
+
+```
+
+```{r tests-get_welcome_message_raul}
+test_that("get_welcome_message_raul works", {
+  expect_error(get_welcome_message_raul(date="a"))
+  expect_error(get_welcome_message_raul(date="1"))
+  expect_equal(get_welcome_message_raul(date = "23/01/2023"), "Hey ! Nous sommes le 23/01/2023 c'est un super jour pour aller observer les écurueils, non ?")
+  
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_welcome_message_raul.Rmd", vignette_name = "Go further")
+```
+

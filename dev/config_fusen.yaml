@@ -45,3 +45,16 @@ flat_get_info.Rmd:
     check: true
     document: true
     overwrite: 'yes'
+flat_get_welcome_message_raul.Rmd:
+  path: dev/flat_get_welcome_message_raul.Rmd
+  state: active
+  R: R/get_welcome_message_raul.R
+  tests: tests/testthat/test-get_welcome_message_raul.R
+  vignettes: vignettes/go-further.Rmd
+  inflate:
+    flat_file: dev/flat_get_welcome_message_raul.Rmd
+    vignette_name: Go further
+    open_vignette: true
+    check: true
+    document: true
+    overwrite: ask
