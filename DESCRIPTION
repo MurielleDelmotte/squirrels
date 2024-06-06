@@ -16,6 +16,7 @@ Imports:
 Suggests: 
     knitr,
     readr,
+    readxl,
     rmarkdown,
     testthat
 VignetteBuilder: 
