@@ -36,7 +36,7 @@ A small function to welcome the user with a message including a provided date.
 #'
 #' @examples
 get_welcome_message_benoit <- function(date) {
-welcome_message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les écurueils, non ?")
+welcome_message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les ecureuils, non ?")
 message(welcome_message)
 }
 ```
@@ -48,7 +48,7 @@ get_welcome_message_benoit("02/01/1997")
 
 ```{r tests-get_welcome_message_benoit}
 test_that("get_welcome_message_benoit works", {
-  expect_message(get_welcome_message_benoit("06/06/2024"), "Hey ! Nous sommes le 06/06/2024, c'est un super jour pour aller observer les écurueils, non ?")
+  expect_message(get_welcome_message_benoit("06/06/2024"), "Hey ! Nous sommes le 06/06/2024, c'est un super jour pour aller observer les ecureuils, non ?")
 
 })
 

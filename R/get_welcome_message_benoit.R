@@ -13,6 +13,6 @@
 #' get_welcome_message_benoit("02/01/1997")
 #'
 get_welcome_message_benoit <- function(date) {
-welcome_message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les écurueils, non ?")
+welcome_message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les ecureuils, non ?")
 message(welcome_message)
 }
