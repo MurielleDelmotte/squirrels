@@ -1,0 +1,63 @@
+---
+title: "flat_get_welcome_message_benoit.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(glue)
+
+date <- "23/01/2023"
+message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les écurueils, non ?")
+message
+
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+A small function to welcome the user with a message including a provided date.
+
+# get_welcome_message_benoit
+
+```{r function-get_welcome_message_benoit}
+#' get_welcome_message_benoit 
+#' 
+#' Benoit's function to send a welcome message to the user.
+#'
+#' @param date A `string` character providing the date to be included in the welcome message.
+#' @importFrom glue glue
+#' @return A message in the console welcoming the user with the provided `date` parameter.
+#' @export
+#'
+#' @examples
+get_welcome_message_benoit <- function(date) {
+welcome_message <- glue("Hey ! Nous sommes le {date}, c'est un super jour pour aller observer les écurueils, non ?")
+message(welcome_message)
+}
+```
+
+```{r examples-get_welcome_message_benoit}
+get_welcome_message_benoit("02/01/1997")
+
+```
+
+```{r tests-get_welcome_message_benoit}
+test_that("get_welcome_message_benoit works", {
+  expect_message(get_welcome_message_benoit("06/06/2024"), "Hey ! Nous sommes le 06/06/2024, c'est un super jour pour aller observer les écurueils, non ?")
+
+})
+
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_welcome_message_benoit.Rmd", vignette_name = "Sending a welcome message to the user")
+```
+
