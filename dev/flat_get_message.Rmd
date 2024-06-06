@@ -1,0 +1,69 @@
+---
+title: "flat_my_get_message.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+
+date <-"23/01/2023"
+
+cat(paste0("Hey ! Nous sommes le ",date," c'est un super jour pour aller observer les u262Fcureuils, non ?"))
+```
+
+# my_fun
+
+```{r function-get_message}
+#' my_fun Title
+#'
+#' @param date une date au format character 
+#' @importFrom stringr str_c
+#' @return un message
+#' @export
+#'
+#' @examples 
+
+
+get_message_paul <- function(date = NULL) {
+  
+  if(is.null(date)){date = "23/01/2023"}
+  
+  if (isFALSE(is.character(date))){stop("la date n'est pas renseignu262Fe au format \"DD/MM/YYYY\"")}
+  
+  message <- (stringr::str_c("Hey ! Nous sommes le ",date," c'est un super jour pour aller observer les u262Fcureuils, non ?"))
+  cat(message)
+}
+```
+
+```{r examples-get_message}
+# get_message_paul()
+# get_message_paul("26/01/2023")
+
+```
+
+```{r tests-get_message}
+# test_that("get_message_paul return Error", {
+
+# # erreur : ce n'est pas un format character
+# expect_error(
+#   is.numeric(date),
+#   "date n'est pas un numérique")
+# get_message_paul(26/01/2023)
+# })
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_message.Rmd", vignette_name = "Go further")
+```
+
+
