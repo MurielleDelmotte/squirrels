@@ -58,3 +58,16 @@ flat_my_fun.Rmd:
     check: true
     document: true
     overwrite: 'yes'
+flat_run_analysis.Rmd:
+  path: dev/flat_run_analysis.Rmd
+  state: active
+  R: R/run_analysis.R
+  tests: tests/testthat/test-run_analysis.R
+  vignettes: vignettes/run-analysis.Rmd
+  inflate:
+    flat_file: dev/flat_run_analysis.Rmd
+    vignette_name: Run analysis
+    open_vignette: false
+    check: true
+    document: true
+    overwrite: 'yes'
