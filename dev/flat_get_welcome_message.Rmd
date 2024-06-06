@@ -1,0 +1,71 @@
+---
+title: "flat_get_welcome_message.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(glue)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# Get welcome message
+
+
+```{r development}
+function
+date <-"23/01/2023"
+welcome <-glue("Hey! Nous sommes le {date}, c'est un super jour pour aller observer les écureuils non?")
+class(welcome)
+
+```
+
+```{r function-my_fun}
+#' Envoie un message de bienvenue avec la date choisie par l'utilisateur
+#'
+#' @param date character qui prend la forme %d/%m/%y
+#' @importFrom glue glue
+#' @return glue character
+#' @export
+#'
+#' @examples
+get_welcome_message <- function(date) {
+date_param <- date
+  if (!grepl("^\\d{2}/\\d{2}/\\d{4}$", date_param)) {
+    stop("La date doit etre au format jour/mois/annee (dd/mm/yyyy)")
+  }
+  
+  welcome <- glue("Hey! Nous sommes le {date_param}, c'est un super jour pour aller observer les écureuils non?")
+  return(welcome)
+}
+```
+
+```{r examples-my_fun}
+date_ok <- "01/12/2023"
+get_welcome_message(date_ok)
+```
+
+```{r tests-my_fun}
+test_that("get_welcome_message returns the correct message for a given date in day/month/year format", {
+  date_example <- "06/06/2024"
+  expected_message <- "Hey! Nous sommes le 06/06/2024, c'est un super jour pour aller observer les écureuils non?"
+  expect_equal(get_welcome_message(date_example), expected_message)
+})
+
+
+
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_welcome_message.Rmd", vignette_name = "Welcome message")
+```
+

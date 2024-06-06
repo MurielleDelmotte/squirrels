@@ -45,3 +45,16 @@ flat_get_info.Rmd:
     check: true
     document: true
     overwrite: 'yes'
+flat_get_welcome_message.Rmd:
+  path: dev/flat_get_welcome_message.Rmd
+  state: active
+  R: R/get_welcome_message.R
+  tests: tests/testthat/test-get_welcome_message.R
+  vignettes: vignettes/welcome-message.Rmd
+  inflate:
+    flat_file: dev/flat_get_welcome_message.Rmd
+    vignette_name: Welcome message
+    open_vignette: true
+    check: true
+    document: true
+    overwrite: ask
