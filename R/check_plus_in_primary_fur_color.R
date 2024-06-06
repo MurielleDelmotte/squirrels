@@ -4,7 +4,6 @@
 #'
 #' @param primary_fur_color Character. A vector with the primary fur color.
 #' @return a vector of logicals
-#' @importFrom stringr str_detect
 #' @export
 #' @examples
 #' vec <- c("Black", "Black+Cinnamon", "Cinnamon", NA)
@@ -16,7 +15,9 @@ check_plus_in_primary_fur_color <- function(primary_fur_color) {
   }
   
   
-  colors_are_ok <- !str_detect(string = primary_fur_color, pattern = "\\+")
+  colors_are_ok <- !grepl(pattern = "\\+", x = primary_fur_color)
+  colors_are_ok[is.na(primary_fur_color)] <- NA
+  
   
   return(colors_are_ok)
   
