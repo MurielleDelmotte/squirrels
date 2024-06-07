@@ -1,0 +1,72 @@
+---
+title: "flat_additional.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+```{r}
+
+Cette fonction doit être testée et documentée.
+
+date = "23/01/2023"
+
+message <- paste("Hey ! Nous sommes le", date, "c'est un super jour pour aller observer les écurueils, non ?")
+
+message
+
+```
+
+
+# my_fun
+
+```{r function-my_fun}
+#' my_fun Title
+#'
+#' @return 1
+#' @export
+#'
+#' @examples
+get_welcome_message_lucia <- function(date = "23/01/2023"){
+  
+  date <- as.Date(date)
+  
+  # if(isFALSE(inherits(date,"Date"))){
+  #   stop("date should be expressed in the format DD/MM/YYYY")
+  # }
+  
+  message <- paste("Hey ! Nous sommes le", date, "c'est un super jour pour aller observer les écurueils, non ?")
+
+ message
+}
+```
+
+```{r examples-my_fun}
+get_welcome_message_lucia(date = "hola")
+```
+
+```{r tests-my_fun}
+test_that("my_fun works", {
+expect_true(inherits(get_welcome_message_lucia, "function"))
+
+    # expect_error(object = get_welcome_message_lucia(date = "hola"), 
+    #              regexp = "date should be expressed in the format DD/MM/YYYY")
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_additional.Rmd", vignette_name = "Go further")
+```
+
