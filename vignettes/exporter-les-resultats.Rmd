@@ -34,7 +34,7 @@ mon_dossier_temp <- tempfile(pattern = "saveascsv")
 dir.create(mon_dossier_temp)
 mypath <- file.path(mon_dossier_temp, "output.csv")
 
-save_as_csv(df = iris, mypath = mypath)
+save_as_csv(df = iris, mypath = mypath, row.names = FALSE)
 unlink(mypath)
 ```
 

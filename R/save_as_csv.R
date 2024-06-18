@@ -4,7 +4,7 @@
 #'
 #' @param df Data frame. The table to be saved as a csv file.
 #' @param mypath Character. Path where the csv file shloud be saved.
-#'
+#' @param ... parameters of `write.csv2()`
 #' @importFrom tools file_ext
 #' @importFrom utils write.csv2
 #'
@@ -20,9 +20,9 @@
 #' dir.create(mon_dossier_temp)
 #' mypath <- file.path(mon_dossier_temp, "output.csv")
 #'
-#' save_as_csv(df = iris, mypath = mypath)
+#' save_as_csv(df = iris, mypath = mypath, row.names = FALSE)
 #' unlink(mypath)
-save_as_csv <- function(df, mypath ){
+save_as_csv <- function(df, mypath, ... ){
     
   
 if (isFALSE(is.data.frame(df))) {
@@ -41,7 +41,7 @@ if (isFALSE(dir.exists(dirname(mypath)))){
   stop("mypath does not exist")
 }
 
-write.csv2(x = df, file = mypath)
+write.csv2(x = df, file = mypath, ...)
 message("Finish : Writing")
 return(mypath)
   
