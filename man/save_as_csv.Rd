@@ -4,12 +4,14 @@
 \alias{save_as_csv}
 \title{Save an output as a csv file}
 \usage{
-save_as_csv(df, mypath)
+save_as_csv(df, mypath, ...)
 }
 \arguments{
 \item{df}{Data frame. The table to be saved as a csv file.}
 
 \item{mypath}{Character. Path where the csv file shloud be saved.}
+
+\item{...}{parameters of \code{write.csv2()}}
 }
 \value{
 The path to the created csv file.
@@ -25,6 +27,6 @@ mon_dossier_temp <- tempfile(pattern = "saveascsv")
 dir.create(mon_dossier_temp)
 mypath <- file.path(mon_dossier_temp, "output.csv")
 
-save_as_csv(df = iris, mypath = mypath)
+save_as_csv(df = iris, mypath = mypath, row.names = FALSE)
 unlink(mypath)
 }
