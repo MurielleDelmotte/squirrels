@@ -58,6 +58,19 @@ flat_my_fun.Rmd:
     check: true
     document: true
     overwrite: 'yes'
+flat_read_multiple_data.Rmd:
+  path: dev/flat_read_multiple_data.Rmd
+  state: active
+  R: R/read_multiple_data.R
+  tests: tests/testthat/test-read_multiple_data.R
+  vignettes: vignettes/td_purrr.Rmd
+  inflate:
+    flat_file: dev/flat_read_multiple_data.Rmd
+    vignette_name: td_purrr
+    open_vignette: true
+    check: true
+    document: true
+    overwrite: ask
 flat_run_analysis.Rmd:
   path: dev/flat_run_analysis.Rmd
   state: active
