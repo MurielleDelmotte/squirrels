@@ -10,13 +10,14 @@ Depends:
 Imports: 
     dplyr,
     glue,
+    purrr,
+    readxl,
     stringr,
     tools,
     utils
 Suggests: 
     knitr,
     readr,
-    readxl,
     rmarkdown,
     testthat
 VignetteBuilder: 

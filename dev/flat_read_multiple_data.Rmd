@@ -1,0 +1,145 @@
+---
+title: "flat_read_multiple_data.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(readxl)
+library(purrr)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+
+mypath <-  system.file(package = "squirrels")
+
+possi_excel <- possibly(read_excel, otherwise = NULL)
+
+possi_excel(system.file("nyc_squirrels_17.xlsx", package = "squirrels"))
+
+
+possi_excel(system.file("nyc_squirrels_18.xlsx", package = "squirrels"))
+
+
+chemin <- list.files(path = mypath, 
+                     pattern = "nyc_squirrels_[0-9][0-9].xlsx", full.names = TRUE )
+
+annee <- stringr::str_extract(chemin, pattern = "[0-9][0-9].xlsx") |>
+          stringr::str_sub(1,2)
+
+chemin |>
+  map(possi_excel) |>
+  set_names(annee)
+
+
+```
+
+# read_multiple_data
+
+```{r function-read_multiple_data}
+#' read_multiple_data Title
+#'
+#' @param path le chemin
+#' @importFrom stringr str_extract str_sub
+#' @importFrom readxl read_excel
+#' @importFrom purrr possibly map set_names
+#' @return une liste de fichiers lus
+#' @export
+#'
+#' @examples
+read_multiple_data <- function(path) {
+  
+  if (isFALSE(dir.exists(path))) {
+    stop("path does not exist")
+  }
+  
+  
+  possi_excel <- possibly(read_excel, otherwise = NULL)
+    
+  chemin <- list.files(path = path, 
+                       pattern = "nyc_squirrels_[0-9][0-9].xlsx", 
+                       full.names = TRUE )
+  
+  
+  if (length(chemin) == 0){
+    stop("There is no files in this path")
+  }
+  
+  annee <- stringr::str_extract(chemin, pattern = "[0-9][0-9].xlsx") |>
+            stringr::str_sub(1,2)
+  
+  resultat <- chemin |>
+    map(possi_excel) |>
+    set_names(annee)
+  
+  return(resultat)
+}
+```
+
+```{r examples-read_multiple_data}
+library(purrr)
+tabs <- read_multiple_data(path = system.file(package = "squirrels"))
+
+
+ttt <- tabs |>
+  map(nrow)
+
+unlist(ttt["19"])
+
+ttt["19"]
+ttt[["19"]]
+
+
+tabs |>
+  compact() |>
+  map(nrow)
+
+```
+
+```{r tests-read_multiple_data}
+test_that("read_multiple_data works", {
+
+  
+    expect_error(
+      read_multiple_data(path = "jenexistepas"),
+      "path does not exist"
+    )
+  
+  
+  tmp_dir <- tempfile(pattern = "toto")
+  dir.create(tmp_dir)
+  expect_error(
+    read_multiple_data(path = tmp_dir),
+    "There is no files in this path"
+  )
+  
+  file.copy(
+    from = list.files(
+      system.file(package = "squirrels"),
+      pattern = "nyc_squirrels_[0-9][0-9].xlsx",
+      full.names = TRUE
+    ),
+    to = tmp_dir
+  )
+  res_import_xlsx <- read_multiple_data(tmp_dir)
+
+  expect_equal(
+    length(res_import_xlsx),
+    4
+  )
+
+  
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_read_multiple_data.Rmd", vignette_name = "td_purrr")
+```
+
