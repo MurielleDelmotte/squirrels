@@ -1,0 +1,97 @@
+---
+title: "flat_first.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+<!--
+ You need to run the 'description' chunk in the '0-dev_history.Rmd' file before continuing your code there.
+-->
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# Get a message with a number of rows in a data frame of interest
+
+This function admits 1 parameter: 
+- `df` Dataframe.
+It returns a message in the console
+
+```{r development}
+library(glue) # Au tout début
+
+message("The dataset is composed of 150 observations")
+
+df <- iris
+nrow_df <- nrow(df)
+
+message(glue("The dataset is composed of {nrow_df} observations"))
+```
+
+
+```{r function-get_df_nrows}
+#' get_df_nrows
+#' 
+#' Get a message with a number of rows in a data frame of interest
+#' 
+#' @param df Dataframe 
+#' @importFrom glue glue
+#' 
+#' @return the number of rows + a message in the console
+#' 
+#' @export
+get_df_nrows <- function(df){
+    
+  nrow_df <- nrow(df)
+
+  message(glue("The dataset is composed of {nrow_df} observations"))
+  
+  return(nrow_df)
+}
+```
+  
+```{r example-get_df_nrows}
+get_df_nrows(df = iris)
+get_df_nrows(df = mtcars)
+```
+  
+```{r tests-get_df_nrows}
+test_that("get_df_nrows works", {
+
+  toto <- structure(list(mpg = c(21, 21), cyl = c(6, 6)), row.names = c("Mazda RX4", "Mazda RX4 Wag"
+), class = "data.frame")
+  
+  expect_message(
+    object = get_df_nrows(df = toto),
+    regexp = "The dataset is composed of 2 observations"
+  )
+  
+  
+  expect_message(
+    object = get_df_nrows(df = iris),
+    regexp = "The dataset is composed of 150 observations"
+  )
+  
+  expect_message(
+    object = get_df_nrows(df = mtcars),
+    regexp = "The dataset is composed of 32 observations"
+  )
+})
+
+```
+  
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_info.Rmd", 
+               vignette_name = "Get info about the dataset", overwrite = TRUE)
+```

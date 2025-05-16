@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# squirrels
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of squirrels is to analyse squirrels .... 
+
+## Installation
+
+You can install the development version of squirrels like so:
+
+``` r
+remotes::install_local("...... tar.gz")
+```
+
+## Example
+
+
+```{r example}
+library(squirrels)
+## basic example code
+```
+
+```{r}
+get_df_nrows(df = iris)
+```
+
