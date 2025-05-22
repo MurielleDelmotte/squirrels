@@ -3,6 +3,7 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   check-data: check-data.html
+  exemple_vignette_squirrels: exemple_vignette_squirrels.html
   exporter-les-resultats: exporter-les-resultats.html
   get-info-about-the-dataset: get-info-about-the-dataset.html
-last_built: 2025-05-22T08:24Z
+last_built: 2025-05-22T17:12Z
