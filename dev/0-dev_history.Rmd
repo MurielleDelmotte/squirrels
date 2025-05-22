@@ -43,6 +43,9 @@ fusen::init_share_on_github()
 
 ```{r, eval=FALSE}
 usethis::use_git()
+
+usethis::use_git_remote("origin", 
+                        url = "https://github.com/MurielleDelmotte/squirrels.git")
 # Deal with classical files to ignore
 usethis::git_vaccinate()
 # Use main for primary branch
