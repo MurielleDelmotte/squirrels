@@ -140,6 +140,10 @@ fusen::init_share_on_github()
 ```{r}
 usethis::use_r("get_df_ncols")
 usethis::use_test("get_df_ncols")
+usethis::use_r("filter_squirrels_data_based_on_integrity")
+usethis::use_test("filter_squirrels_data_based_on_integrity")
+usethis::use_test("use_case")
+usethis::use_vignette("exemple_vignette_squirrels")
 attachment::att_amend_desc()
 ```
 
