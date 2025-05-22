@@ -1,0 +1,100 @@
+---
+title: "flat_export_results.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# save_as_csv
+    
+```{r development-save_as_csv}
+# You can prepare the code of the save_as_csv() function here
+library(tools)
+library(readr)
+```
+  
+```{r function-save_as_csv}
+#' Sauvegarde d'un df en csv
+#' 
+#' @param df df a exporter
+#' @param path chemin de sortie
+#' @return le chemin de sortie
+#' @importFrom tools file_ext
+#' @importFrom readr write_csv2
+#' @export
+save_as_csv <- function(df, path){
+  
+  if (isFALSE(is.data.frame(df))) {
+    stop("df is not a dataframe")
+  }
+  
+  if (isFALSE(file_ext(path) == "csv")) {
+    stop("path does not have extension csv")
+  }
+  
+  if (isFALSE(dir.exists(dirname(path)))) {
+    stop("path does not exist")
+  }
+  
+  write_csv2(df, file = path)
+  
+  return(path)
+    
+}
+```
+  
+```{r example-save_as_csv}
+mon_dossier_temp <- tempfile(pattern = "savecsv")
+dir.create(mon_dossier_temp)
+
+save_as_csv(df = iris, path = file.path(mon_dossier_temp, "output.csv"))
+
+unlink(mon_dossier_temp, recursive = TRUE)
+
+```
+  
+```{r tests-save_as_csv}
+test_that("save_as_csv works", {
+  expect_true(inherits(save_as_csv, "function")) 
+  
+  mon_dossier_temp <- tempfile(pattern = "savecsv")
+  dir.create(mon_dossier_temp)
+
+  save_as_csv(df = iris, path = file.path(mon_dossier_temp, "output.csv"))
+
+  expect_true(object = file.exists(file.path(mon_dossier_temp, "output.csv")))
+  
+  unlink(mon_dossier_temp, recursive = TRUE)
+  
+  
+})
+
+test_that("save_as_csv produces error", {
+  
+  expect_error(object = save_as_csv(df = "toto", path = "fakedir/fakefile.csv"), regexp = "df is not a dataframe")
+  
+  expect_error(object = save_as_csv(df = iris, path = "fakedir/fakefile.csv"), regexp = "path does not exist")
+  
+  expect_error(object = save_as_csv(df = iris, path = "fakedir/fakefile.txt"), regexp = "path does not have extension csv")
+  
+  
+})
+```
+  
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_export_results.Rmd", vignette_name = "Exporter les résultats")
+```
+
