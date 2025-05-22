@@ -13,11 +13,12 @@ Depends:
     R (>= 3.5)
 Imports: 
     glue,
-    stringr
+    readr,
+    stringr,
+    tools
 Suggests: 
     dplyr,
     knitr,
-    readr,
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 
