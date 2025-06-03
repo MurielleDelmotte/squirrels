@@ -1,9 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   check-data: check-data.html
   exemple_vignette_squirrels: exemple_vignette_squirrels.html
   exporter-les-resultats: exporter-les-resultats.html
   get-info-about-the-dataset: get-info-about-the-dataset.html
-last_built: 2025-05-23T06:01Z
+last_built: 2025-06-03T05:46Z
