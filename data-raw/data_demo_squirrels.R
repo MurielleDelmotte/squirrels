@@ -9,5 +9,3 @@ usethis::use_data(data_demo_squirrels, overwrite = TRUE)
 
 # documentation
 checkhelper::use_data_doc("data_demo_squirrels")
-
-

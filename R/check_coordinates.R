@@ -34,8 +34,7 @@ check_coordinates <- function(latitude, longitude) {
 
   coordinates_are_ok <-
     latitude > 40.76400 & latitude < 40.80100 &
-    longitude > -73.98300 & longitude < -73.94735
+      longitude > -73.98300 & longitude < -73.94735
 
   return(coordinates_are_ok)
 }
-

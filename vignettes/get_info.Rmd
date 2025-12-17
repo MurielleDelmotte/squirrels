@@ -38,6 +38,5 @@ This function admits 1 parameter:
 It returns a message in the console
 
 ```{r}
-
 ```
 

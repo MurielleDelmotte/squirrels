@@ -6,7 +6,6 @@
 #' @examples
 #' check_plus_in_primary_fur_color(primary_fur_color = c("Black", "Black+Cinnamon", "Cinnamon"))
 check_plus_in_primary_fur_color <- function(primary_fur_color) {
-
   if (isFALSE(is.character(primary_fur_color))) {
     stop("primary_fur_color should be a character")
   }

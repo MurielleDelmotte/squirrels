@@ -40,6 +40,11 @@ usethis::use_data_raw("data_demo_squirrels")
 
 ## Documentation
 
+```{r}
+usethis::use_package_doc()
+```
+
+
 ### pkgdown 
 
 ```{r}
@@ -138,5 +143,12 @@ usethis::use_git_remote("origin",
 
 
 gert::git_push(remote = "origin")
+```
+
+## globalVariables
+
+```{r}
+usethis::use_r("globals")
+checkhelper::print_globals(quiet = TRUE)
 ```
 

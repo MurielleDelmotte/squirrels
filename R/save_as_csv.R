@@ -1,6 +1,6 @@
 #' Sauvegarde d'un df en csv
 #'
-#' @param df df a exporter
+#' @param df df à exporter
 #' @param path chemin de sortie
 #'
 #' @importFrom tools file_ext
@@ -14,10 +14,9 @@
 #' save_as_csv(df = data_demo_squirrels, path = file.path(dossier_temp, "monfichier.csv"))
 #' unlink(dossier_temp, recursive = TRUE)
 #'
-save_as_csv <- function(df, path){
-
-  if (isFALSE(is.data.frame(df))){
-    stop("df must be a dataframe")
+save_as_csv <- function(df, path) {
+  if (isFALSE(is.data.frame(df))) {
+    stop("df must be a dataframe - r\u00e2t\u00e9 !")
   }
 
   if (isFALSE(file_ext(path) == "csv")) {
@@ -27,9 +26,6 @@ save_as_csv <- function(df, path){
   if (isFALSE(dir.exists(dirname(path)))) {
     stop("path does not exist")
   }
-
   write_csv2(df, file = path)
-
   return(path)
-
 }

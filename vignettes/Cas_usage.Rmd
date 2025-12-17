@@ -46,26 +46,23 @@ filtered_data
 
 Create a temporary directory to save the filtered data and use the `save_as_csv` function to save each category into separate CSV files.
 ```{r}
-
 output_dir <- tempfile()
 dir.create(output_dir)
 
-    save_as_csv(
-      df = filtered_data$df_valid_data,
-      path = file.path(output_dir, "valid_data.csv")
-    )
- 
-    save_as_csv(
-      df = filtered_data$df_invalid_data,
-      path = file.path(output_dir, "invalid_data.csv")
-    )
+save_as_csv(
+  df = filtered_data$df_valid_data,
+  path = file.path(output_dir, "valid_data.csv")
+)
 
-    save_as_csv(
-      df = filtered_data$df_missing_data,
-      path = file.path(output_dir, "missing_data.csv")
-    )
-  
+save_as_csv(
+  df = filtered_data$df_invalid_data,
+  path = file.path(output_dir, "invalid_data.csv")
+)
 
+save_as_csv(
+  df = filtered_data$df_missing_data,
+  path = file.path(output_dir, "missing_data.csv")
+)
 ```
 
 
