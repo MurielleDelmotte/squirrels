@@ -1,0 +1,73 @@
+---
+title: "check_data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{check_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(squirrels)
+```
+
+
+
+# check_plus_in_primary_fur_color
+    
+  
+```{r example-check_plus_in_primary_fur_color}
+check_plus_in_primary_fur_color(
+  c("Black", "Black+Cinnamon", "Cinnamon", NA)
+)
+```
+
+  
+
+
+# check_coordinates
+    
+  
+```{r example-check_coordinates}
+both_valid_latitude <- c(40.766, 40.799)
+both_valid_longitude <- c(-73.96, -73.95)
+both_invalid_latitude <- c(30, 32)
+both_invalid_longitude <- c(-100, -99)
+one_invalid_latitude <- c(40.766, 50)
+one_invalid_longitude <- c(-73.95, -100)
+
+check_coordinates(
+  latitude = both_valid_latitude,
+  longitude = both_valid_longitude
+)
+
+check_coordinates(
+  latitude = both_invalid_latitude,
+  longitude = both_invalid_longitude
+)
+
+check_coordinates(
+  latitude = one_invalid_latitude,
+  longitude = one_invalid_longitude
+)
+```
+
+
+
+## check_presence_of_required_columns
+
+
+```{r}
+data("data_demo_squirrels")
+check_presence_of_required_columns(data_demo_squirrels)
+```
+
+
+

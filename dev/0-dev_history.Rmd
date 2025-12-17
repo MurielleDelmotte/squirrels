@@ -1,0 +1,123 @@
+---
+title: "dev history"
+output: html_document
+date: "2025-12-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ignore the dev/ folder and its contents for package creation
+```{r}
+usethis::use_build_ignore("dev/")
+```
+
+# Define License with 
+```{r}
+usethis::use_mit_license("Murielle Delmotte")
+```
+
+# Install a first time
+```{r}
+remotes::install_local(path = here::here(), force=TRUE) 
+```
+
+# Restart the R Session
+```{r}
+rstudioapi::restartSession("rm(list = ls())")
+```
+
+## Data
+
+```{r}
+usethis::use_directory("data-raw", ignore = TRUE) 
+usethis::use_data_raw("data_squirrels")
+usethis::use_data_raw("data_demo_squirrels")
+
+```
+
+
+## Documentation
+
+### pkgdown 
+
+```{r}
+usethis::use_pkgdown()
+pkgdown::build_site(pkg = here::here(), override = list(destination = "inst/site"))
+```
+
+### README
+
+```{r}
+usethis::use_readme_rmd()
+```
+
+```{r}
+usethis::use_code_of_conduct("murielle@thinkr.fr")
+```
+
+
+```{r}
+usethis::use_news_md()
+
+usethis::use_version(which = "patch")
+usethis::use_version(which = "dev")
+#usethis::use_dev_version()
+```
+
+
+
+## Vignette
+
+```{r}
+usethis::use_vignette("get_info")
+usethis::use_vignette("check_data")
+```
+
+# Création de script R
+
+```{r}
+usethis::use_r("get_df_nrows")
+usethis::use_r("check_plus_in_primary_fur_color")
+usethis::use_r("check_coordinates")
+usethis::use_r("check_presence_of_required_columns")
+```
+
+## use pipe
+
+```{r}
+usethis::use_pipe()
+```
+
+
+## Dépendance
+
+```{r}
+attachment::att_amend_desc(path = here::here())
+```
+
+## Tests
+
+```{r}
+usethis::use_testthat()
+usethis::use_test("get_df_nrows")
+usethis::use_test("check_plus_in_primary_fur_color")
+usethis::use_test("check_coordinates")
+usethis::use_test("check_presence_of_required_columns")
+```
+
+
+## Code coverage
+
+```{r}
+covr::package_coverage()
+covr::report()
+```
+
+## Check
+
+```{r}
+devtools::check()
+```
+

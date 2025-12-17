@@ -1,0 +1,43 @@
+---
+title: "get_info"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{get_info}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(squirrels)
+```
+
+# Get a message with a number of rows in a data frame of interest
+
+This function admits 1 parameter: 
+- `df` Dataframe. The dataset to analyze
+
+It returns a message in the console
+
+```{r}
+get_df_nrows(df = iris)
+get_df_nrows(df = mtcars)
+```
+
+# Get a message with a number of cols in a data frame of interest
+
+This function admits 1 parameter: 
+- `df` Dataframe. The dataset to analyze
+
+It returns a message in the console
+
+```{r}
+
+```
+
