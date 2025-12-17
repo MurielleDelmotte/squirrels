@@ -1,0 +1,72 @@
+---
+title: "Cas_usage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cas_usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(squirrels)
+```
+
+
+# Use Case: Filtering and Saving Squirrel Data
+
+This vignette demonstrates how to use the functions in the package to filter squirrel data based on their integrity and save the results into separate CSV files.
+
+## Loading the Data
+
+Start by loading the demo squirrel data included in the package.
+```{r}
+data("data_demo_squirrels")
+```
+
+
+
+## Filtering the Data
+
+Next, we apply the `filter_squirrels_data_based_on_integrity` function to filter the data based on their integrity. This function divides the data into three categories: valid, invalid, and missing.
+```{r}
+filtered_data <- filter_squirrels_data_based_on_integrity(data_demo_squirrels)
+filtered_data
+```
+
+
+
+## Saving the Filtered Data
+
+Create a temporary directory to save the filtered data and use the `save_as_csv` function to save each category into separate CSV files.
+```{r}
+
+output_dir <- tempfile()
+dir.create(output_dir)
+
+    save_as_csv(
+      df = filtered_data$df_valid_data,
+      path = file.path(output_dir, "valid_data.csv")
+    )
+ 
+    save_as_csv(
+      df = filtered_data$df_invalid_data,
+      path = file.path(output_dir, "invalid_data.csv")
+    )
+
+    save_as_csv(
+      df = filtered_data$df_missing_data,
+      path = file.path(output_dir, "missing_data.csv")
+    )
+  
+
+```
+
+
+
