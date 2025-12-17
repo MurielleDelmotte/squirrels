@@ -1,0 +1,31 @@
+---
+title: "export_results"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{export_results}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(squirrels)
+```
+
+# Save as csv
+
+```{r}
+dossier_temp <- tempfile(pattern = "saveascsv")
+dir.create(dossier_temp)
+
+save_as_csv(df = data_demo_squirrels, path = file.path(dossier_temp, "monfichier.csv"))
+
+unlink(dossier_temp, recursive = TRUE)
+```
+

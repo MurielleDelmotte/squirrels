@@ -73,6 +73,7 @@ usethis::use_version(which = "dev")
 ```{r}
 usethis::use_vignette("get_info")
 usethis::use_vignette("check_data")
+usethis::use_vignette("export_results")
 ```
 
 # Création de script R
@@ -82,6 +83,7 @@ usethis::use_r("get_df_nrows")
 usethis::use_r("check_plus_in_primary_fur_color")
 usethis::use_r("check_coordinates")
 usethis::use_r("check_presence_of_required_columns")
+usethis::use_r("save_as_csv")
 ```
 
 ## use pipe
@@ -105,6 +107,7 @@ usethis::use_test("get_df_nrows")
 usethis::use_test("check_plus_in_primary_fur_color")
 usethis::use_test("check_coordinates")
 usethis::use_test("check_presence_of_required_columns")
+usethis::use_test("save_as_csv")
 ```
 
 
