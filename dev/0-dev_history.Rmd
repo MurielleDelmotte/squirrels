@@ -121,3 +121,16 @@ covr::report()
 devtools::check()
 ```
 
+# Versionnement
+
+```{r}
+usethis::use_git()
+
+usethis::use_git_remote("origin",
+                        url = "https://github.com/MurielleDelmotte/squirrels.git",
+                        overwrite = TRUE)
+
+
+gert::git_push(remote = "origin")
+```
+
