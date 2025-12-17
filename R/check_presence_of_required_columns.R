@@ -9,7 +9,6 @@
 #' @examples
 #' data("data_demo_squirrels")
 #' check_presence_of_required_columns(data_demo_squirrels)
-
 check_presence_of_required_columns <- function(df) {
   required_columns_are_present <- all(
     c("primary_fur_color", "long", "lat") %in% names(df)
@@ -20,5 +19,4 @@ check_presence_of_required_columns <- function(df) {
   }
 
   return(required_columns_are_present)
-
-  }
+}

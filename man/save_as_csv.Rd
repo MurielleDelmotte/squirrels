@@ -7,7 +7,7 @@
 save_as_csv(df, path)
 }
 \arguments{
-\item{df}{df a exporter}
+\item{df}{df à exporter}
 
 \item{path}{chemin de sortie}
 }

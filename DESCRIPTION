@@ -8,12 +8,13 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.5)
 Imports: 
+    dplyr,
     glue,
     readr,
-    stringr,
     tools
 Suggests: 
     knitr,
+    readxl,
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 

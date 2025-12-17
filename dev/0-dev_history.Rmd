@@ -40,6 +40,11 @@ usethis::use_data_raw("data_demo_squirrels")
 
 ## Documentation
 
+```{r}
+usethis::use_package_doc()
+```
+
+
 ### pkgdown 
 
 ```{r}
@@ -74,6 +79,7 @@ usethis::use_version(which = "dev")
 usethis::use_vignette("get_info")
 usethis::use_vignette("check_data")
 usethis::use_vignette("export_results")
+usethis::use_vignette("Cas_usage")
 ```
 
 # Création de script R
@@ -84,6 +90,7 @@ usethis::use_r("check_plus_in_primary_fur_color")
 usethis::use_r("check_coordinates")
 usethis::use_r("check_presence_of_required_columns")
 usethis::use_r("save_as_csv")
+usethis::use_r("filter_squirrels_data_based_on_integrity")
 ```
 
 ## use pipe
@@ -108,6 +115,7 @@ usethis::use_test("check_plus_in_primary_fur_color")
 usethis::use_test("check_coordinates")
 usethis::use_test("check_presence_of_required_columns")
 usethis::use_test("save_as_csv")
+usethis::use_test("filter_squirrels_data_based_on_integrity")
 ```
 
 
@@ -135,5 +143,12 @@ usethis::use_git_remote("origin",
 
 
 gert::git_push(remote = "origin")
+```
+
+## globalVariables
+
+```{r}
+usethis::use_r("globals")
+checkhelper::print_globals(quiet = TRUE)
 ```
 
