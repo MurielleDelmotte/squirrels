@@ -80,6 +80,7 @@ usethis::use_vignette("get_info")
 usethis::use_vignette("check_data")
 usethis::use_vignette("export_results")
 usethis::use_vignette("Cas_usage")
+usethis::use_vignette("read_multiple_data")
 ```
 
 # Création de script R
@@ -91,6 +92,7 @@ usethis::use_r("check_coordinates")
 usethis::use_r("check_presence_of_required_columns")
 usethis::use_r("save_as_csv")
 usethis::use_r("filter_squirrels_data_based_on_integrity")
+usethis::use_r("read_data_day_squirrels")
 ```
 
 ## use pipe
@@ -116,6 +118,7 @@ usethis::use_test("check_coordinates")
 usethis::use_test("check_presence_of_required_columns")
 usethis::use_test("save_as_csv")
 usethis::use_test("filter_squirrels_data_based_on_integrity")
+usethis::use_test("read_data_day_squirrels")
 ```
 
 

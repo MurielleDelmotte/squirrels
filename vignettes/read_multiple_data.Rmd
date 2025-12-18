@@ -1,0 +1,26 @@
+---
+title: "read_multiple_data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{read_multiple_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(squirrels)
+```
+
+# Read mutiple data day
+
+```{r}
+read_data_day_squirrels(path = system.file(package = "squirrels"))
+```
+
